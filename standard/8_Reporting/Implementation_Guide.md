@@ -82,8 +82,6 @@ Findings below 50% confidence SHOULD be flagged as "Unconfirmed" and excluded fr
 
 ---
 
-
-
 ## APTS-RP-005: Cryptographic Evidence Chain Integrity
 
 **Implementation:** Bind all evidence to the discovery chain using SHA-256 hashing of raw artifacts. Provide hash values in the report with instructions for client-side verification against original evidence files.
