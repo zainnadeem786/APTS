@@ -420,7 +420,7 @@ The pipeline has four components, mirroring the structure used in APTS-MR-A01:
 
 **Stratified Sampling:**
 
-Stratify the production-side sample across at least three dimensions: autonomy level (L1–L4), engagement size class, and customer-environment class (for example, web application, internal network, cloud control plane). Document a minimum sample size per dimension before per-dimension thresholds apply; for dimensions with sparse samples, report a confidence-interval band rather than a single point estimate, and compare the band's bound against the threshold (mirroring the calibrated-threshold treatment in APTS-MR-A01).
+Stratify the production-side sample across at least three dimensions: autonomy level (L1-L4), engagement size class, and customer-environment class (for example, web application, internal network, cloud control plane). Document a minimum sample size per dimension before per-dimension thresholds apply; for dimensions with sparse samples, report a confidence-interval band rather than a single point estimate, and compare the band's bound against the threshold (mirroring the calibrated-threshold treatment in APTS-MR-A01).
 
 **Verbalized Eval-Recognition Audit:**
 
