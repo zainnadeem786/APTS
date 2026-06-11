@@ -64,7 +64,7 @@ _[If the platform supports model substitution at runtime, disclose each approved
 | Reporting (RP) | _[count]_ | _[count]_ | |
 | **Total** | _[count]_ | _[count]_ | |
 
-> **Reminder:** APTS requires 100% of requirements at the claimed tier to be met. MUST requirements permit no deviation. A SHOULD requirement that is not implemented must be recorded in the SHOULD Deviations section below with a documented justification; an undocumented SHOULD deviation is a conformance gap.
+> **Reminder:** A tier claim requires every MUST requirement at the claimed tier and all lower tiers to be implemented, with no deviation. Every SHOULD requirement at those tiers must be either implemented or recorded in the SHOULD Deviations section below with a documented justification; an undocumented SHOULD deviation is a conformance gap.
 
 ---
 
