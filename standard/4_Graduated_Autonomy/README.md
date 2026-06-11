@@ -42,6 +42,8 @@ A Tier 1 platform satisfies the foundational APTS requirements and is generally 
 
 ### Requirement Index
 
+The 28 requirements in this domain are organized by the autonomy level they primarily govern rather than by thematic group; the Primary Level column below indicates that level.
+
 | ID | Title | Classification | Primary Level |
 |---|---|---|---|
 | APTS-AL-001 | Single Technique Execution | MUST \| Tier 1 | L1 |
@@ -75,7 +77,7 @@ A Tier 1 platform satisfies the foundational APTS requirements and is generally 
 
 ### Conformance
 
-A platform claims conformance with this domain by satisfying all MUST requirements at the tier it targets. APTS defines three cumulative tiers (Tier 1 Foundation, Tier 2 Verified, Tier 3 Comprehensive) in the [Introduction](../Introduction.md); a Tier 2 platform satisfies every Tier 1 AL requirement plus every Tier 2 AL requirement, and a Tier 3 platform satisfies all three tiers. SHOULD-level requirements are interpreted per RFC 2119. As described in the Tier and Level Mapping above, level-specific requirements apply only to platforms that offer the corresponding autonomy level.
+A platform claims conformance with this domain by satisfying every requirement (both MUST and SHOULD) assigned to the compliance tier it targets and to all lower tiers. A SHOULD requirement counts toward tier conformance; a platform that does not implement a SHOULD requirement MUST record a documented justification for the deviation in its conformance claim (see the [Conformance Claim Template](../appendix/Conformance_Claim_Template.md)). An undocumented SHOULD deviation is a conformance gap. APTS defines three cumulative tiers (Tier 1 Foundation, Tier 2 Verified, Tier 3 Comprehensive) in the [Introduction](../Introduction.md); a Tier 2 platform satisfies every Tier 1 AL requirement plus every Tier 2 AL requirement, and a Tier 3 platform satisfies all three tiers. As described in the Tier and Level Mapping above, level-specific requirements apply only to platforms that offer the corresponding autonomy level.
 
 One advisory practice relevant to this domain (APTS-AL-A01 Continuous Improvement and Maturity Roadmap) is documented in the [Advisory Requirements appendix](../appendix/Advisory_Requirements.md). It is not required for conformance at any tier.
 
@@ -723,7 +725,7 @@ Each category contains:
 **Category: CRITICAL/HIGH Exploitation on Dev Systems (Permitted)**
 - Applicability: CRITICAL or HIGH severity vuln on 203.0.113.100-150
 - Approved actions: Execute identified exploit, confirm vulnerability, assess impact
-- Decision criteria: Severity Common Vulnerability Scoring System (CVSS) >7.0, target IP in dev range
+- Decision criteria: Severity Common Vulnerability Scoring System (CVSS) >= 7.0, target IP in dev range
 - Escalation triggers: Unexpected lateral movement, data access, system crash
 - Constraints: No persistence, no destructive actions, log all activities
 
@@ -746,7 +748,7 @@ Each category contains:
 For each major decision point, the tool uses a decision tree documenting:
 - **Root node**: The decision trigger (for example, "vulnerability discovered," "escalation opportunity identified")
 - **Branch conditions**: Criteria evaluated at each branch (for example, impact classification, scope boundaries, autonomy level permissions)
-- **Leaf outcomes**: The action taken and its justification (for example, "proceed with exploitation (within scope, impact ≤ Medium, pre-approved technique)")
+- **Leaf outcomes**: The action taken and its justification (for example, "proceed with exploitation (within scope, impact <= Medium, pre-approved technique)")
 - **Fallback path**: Default-deny outcome when conditions are ambiguous or data is insufficient
 
 ### Verification
@@ -850,7 +852,7 @@ At Level 3 Semi-Autonomous, the platform MUST support management of assessments 
 
 1. **Multi-target deployment test:** Configure an engagement with at least 10 targets at three priority levels (for example, 3 critical, 4 high, 3 medium). Run the platform under normal resource constraints and capture the assessment-start order. Pass criterion: the platform begins assessment of every critical target before any medium target, and the start order within a priority tier reflects the documented prioritization inputs (criticality, estimated effort, dependencies).
 2. **Concurrent operation test:** With a concurrency cap of N parallel targets configured, deploy 2N targets and verify via process/network telemetry that no more than N assessments run simultaneously, that bandwidth/CPU stay within configured ceilings, and that dependency-blocked operations (for example, exploitation steps) wait for prerequisite operations (for example, enumeration) to complete.
-3. **Resource allocation audit:** From audit logs, extract per-target wall-clock time, request count, and tool-invocation count. Pass criterion: high-criticality targets received measurably more resources (for example, ≥2× the median request count of low-criticality targets), and any deviation is justified by a logged adaptation event (for example, early dead-end, finding-driven escalation).
+3. **Resource allocation audit:** From audit logs, extract per-target wall-clock time, request count, and tool-invocation count. Pass criterion: high-criticality targets received measurably more resources (for example, >=2x the median request count of low-criticality targets), and any deviation is justified by a logged adaptation event (for example, early dead-end, finding-driven escalation).
 4. **Progress tracking and behind-schedule alerting:** Inject artificial delay into 2 targets so they fall below the expected progress curve. Verify the platform raises an operator alert identifying the at-risk targets and proposes either intensity reduction or schedule extension.
 5. **Adaptation-on-finding test:** Plant a high-value finding on a low-priority target. Verify the platform reallocates additional time/resources to that target after the finding is detected and that the reallocation decision is captured in the audit log with the triggering finding ID.
 
@@ -965,7 +967,7 @@ At Level 4 Autonomous, the tool operates independently across multiple targets, 
 3. **Long-duration stability:** During the test in (2), capture uptime, memory footprint, log volume, and tool-error rates daily. Pass criterion: no unrecovered crashes, no memory growth indicating leaks, and any tool failures are followed by automated retry/skip per the documented strategy.
 4. **State preservation across restart:** Mid-campaign, force a platform restart (kill the process). Pass criterion: on restart the platform resumes from the last checkpoint without re-running completed targets, without losing findings, and without re-attacking targets already marked complete.
 5. **Adaptation decision audit:** Extract every strategy-adaptation decision from the audit log (target abandoned, intensity changed, lateral movement initiated, new target queued from reconnaissance). For each, verify a referenced finding or condition exists in the data that justifies the decision per the documented adaptation rules. Reject the run if any adaptation lacks a traceable justification.
-6. **Multi-campaign coordination test:** Run 2 parallel campaigns sharing the same resource pool. Verify the platform enforces the global resource budget (sum of campaign usage ≤ pool), avoids deadlock between campaigns, and produces consolidated reporting that distinguishes per-campaign findings.
+6. **Multi-campaign coordination test:** Run 2 parallel campaigns sharing the same resource pool. Verify the platform enforces the global resource budget (sum of campaign usage <= pool), avoids deadlock between campaigns, and produces consolidated reporting that distinguishes per-campaign findings.
 
 ---
 
@@ -1100,14 +1102,14 @@ Tool routes escalation appropriately:
 
 ### Verification
 
-1. **Risk scoring logic review:** Inspect the documented risk-scoring formula and confirm it incorporates each of the inputs in the requirement (finding severity, exposure scope, attack chain feasibility, data sensitivity, time-to-exploitation). Score 20 representative test findings by hand and compare to the platform's computed scores; pass criterion: ≥90% agreement, with any divergences explained by documented logic.
+1. **Risk scoring logic review:** Inspect the documented risk-scoring formula and confirm it incorporates each of the inputs in the requirement (finding severity, exposure scope, attack chain feasibility, data sensitivity, time-to-exploitation). Score 20 representative test findings by hand and compare to the platform's computed scores; pass criterion: >=90% agreement, with any divergences explained by documented logic.
 2. **Threshold definition review:** Confirm that individual-finding, cumulative-exposure, data-access, and critical-system thresholds are explicitly defined per engagement (not hard-coded), that values are documented in the engagement record, and that operators can adjust them only through an authenticated and audited path.
 3. **Individual-threshold trigger test:** Plant a finding scoring just above the individual escalation threshold; verify auto-escalation fires within the documented latency. Repeat with a finding scoring just below the threshold; verify it does NOT escalate. Repeat for at least 3 distinct severity classes.
 4. **Cumulative-threshold trigger test:** Plant N sub-threshold findings that together exceed the cumulative exposure threshold; verify the platform escalates after the threshold is crossed and that the escalation references the cumulative score, not any single finding.
 5. **Predictive escalation test:** Stage an exploitation chain where the next planned step would yield domain admin (or equivalent crown-jewel access). Pass criterion: the platform escalates BEFORE executing the high-impact step, and the escalation message identifies the predicted impact and the planned step.
 6. **Critical-system auto-escalation:** Stage a target marked as critical-system and trigger any compromise on it. Verify auto-escalation fires regardless of severity score.
 7. **Routing test:** Generate one finding in each escalation routing class (immediate-response, strategic, regulatory/legal, business operational). Verify each is delivered to the correct routing channel (security team, leadership, legal/compliance, business owner) per the documented routing matrix.
-8. **False-positive rate monitoring:** Run the platform against a known-clean baseline environment for a defined duration (for example, 24 hours); record the count of escalations triggered. Pass criterion: false-positive rate is below the documented acceptable threshold (for example, ≤1 escalation per 24 hours on the baseline) so that operators are not desensitized.
+8. **False-positive rate monitoring:** Run the platform against a known-clean baseline environment for a defined duration (for example, 24 hours); record the count of escalations triggered. Pass criterion: false-positive rate is below the documented acceptable threshold (for example, <=1 escalation per 24 hours on the baseline) so that operators are not desensitized.
 
 > **See also:** APTS-SC-007 (cumulative risk tracking).
 
