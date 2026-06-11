@@ -97,7 +97,7 @@ Depending on your role:
 No. Start with Tier 1 (72 requirements). Tier 2 and Tier 3 add requirements progressively for cumulative totals of 157 and 173. An additional 18 advisory practices live in the [Advisory Requirements appendix](appendix/Advisory_Requirements.md) under the `APTS-<DOMAIN>-A0x` identifier pattern; advisory practices are not required for conformance at any tier. See [Introduction: Compliance Tiers](Introduction.md#compliance-tiers) for details.
 
 **Q: What if my platform meets most but not all Tier 1 requirements?**
-APTS does not award partial credit. A platform must meet 100% of requirements for its claimed tier; MUST requirements permit no deviation. At Tier 2 and above, an unimplemented SHOULD requirement does not void the claim if the deviation is documented with justification in the conformance claim. Address MUST gaps before claiming a tier.
+APTS does not award partial credit. A tier claim requires every MUST requirement at the claimed tier and all lower tiers to be implemented, with no deviation. Every SHOULD requirement at those tiers must be either implemented or covered by a documented justification in the conformance claim. Address MUST gaps before claiming a tier.
 
 **Q: Are the Implementation Guides mandatory?**
 No. Implementation Guides are informative. They suggest approaches but do not define requirements. The domain READMEs contain all normative requirements.
