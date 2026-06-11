@@ -456,7 +456,7 @@ SOC 2 defines five trust services categories, each with specific Trust Services 
 
 NIST AI RMF 1.0 defines four functions for managing AI system risks. APTS addresses controls across all four functions, with particular depth in GOVERN and MANAGE.
 
-### GOVERN Function
+### GOVERN Function (AI RMF)
 
 **GOVERN 1: Policies and Procedures**
 - Controls: Implement graduated autonomy governance with mandatory approval gates for all significant actions at L1 (APTS-HO-001); document human oversight policies specifying role responsibilities (APTS-HO-004)
