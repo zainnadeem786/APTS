@@ -34,7 +34,7 @@ This standard uses RFC 2119 language:
 
 | Term | Meaning |
 |------|---------|
-| **MUST** | Mandatory requirement. Non-compliance means the requirement is not met. |
+| **MUST** | Mandatory requirement. No deviation is permitted for a tier claim. |
 | **MUST NOT** | Absolute prohibition. |
 | **SHOULD** | Recommended. Deviation requires documented justification. |
 | **SHOULD NOT** | Not recommended. Deviation is acceptable with documented justification. |
@@ -76,10 +76,3 @@ Licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). 
 |---------|------|-------|
 | 0.1.0 | April 2026 | Initial release. Eight domains, 173 tier-required requirements across three compliance tiers, plus 18 advisory practices in the appendix. |
 
----
-
-## Version History
-
-| Version | Date | Notes |
-|---------|------|-------|
-| 0.1.0 | April 2026 | Initial release. Eight domains, 173 tier-required requirements across three compliance tiers, plus 18 advisory practices in the appendix. |
