@@ -79,7 +79,7 @@ Notation for specifying IP address ranges using a base address and prefix length
 Alternative security measures that mitigate vulnerability when the primary control is missing. Example: Two-factor authentication compensates for weak passwords.
 
 **Compliance Tier**
-One of three progressive levels of APTS conformance. Tier 1 (Foundation) requires 72 core requirements (MUST | Tier 1). Tier 2 (Verified) adds 85 requirements for a cumulative 157 (MUST | Tier 2 + SHOULD | Tier 2). Tier 3 (Comprehensive) adds 16 requirements for a cumulative 173 (MUST | Tier 3 + SHOULD | Tier 3). A platform must meet 100% of requirements assigned to its claimed tier (both MUST and SHOULD). An additional 18 advisory practices in the Advisory Requirements appendix are recommended for highest-assurance engagements but are not counted toward any tier.
+One of three progressive levels of APTS conformance. Tier 1 (Foundation) requires 72 core requirements (MUST | Tier 1). Tier 2 (Verified) adds 85 requirements for a cumulative 157 (MUST | Tier 2 + SHOULD | Tier 2). Tier 3 (Comprehensive) adds 16 requirements for a cumulative 173 (MUST | Tier 3 + SHOULD | Tier 3). A platform must meet 100% of requirements assigned to its claimed tier (both MUST and SHOULD); an unimplemented SHOULD requires a documented justification in the conformance claim, while an unimplemented MUST is a conformance failure. An additional 18 advisory practices in the Advisory Requirements appendix are recommended for highest-assurance engagements but are not counted toward any tier.
 
 **Confidence Score**
 A numeric value on a 0-100% scale indicating the platform's certainty in a scope boundary determination, target legitimacy assessment, asset classification, or finding validity. Scores below 75% for scope-related decisions trigger mandatory human escalation. See APTS-HO-013, APTS-RP-003.
@@ -381,7 +381,7 @@ A single technique execution or check performed by the platform against a target
 Database-level encryption of data at rest. Automatic, transparent to applications. Used for protection of sensitive data in databases.
 
 **Testing Phase**
-A discrete stage in the penetration testing lifecycle. This standard recognizes the following canonical phases: Initialization, Reconnaissance, Enumeration, Vulnerability Assessment, Exploitation, Post-Exploitation, and Reporting. Domain-specific requirements may reference phase subsets relevant to their scope.
+A discrete stage in the penetration testing lifecycle. This standard uses the canonical phase model defined in the Graduated Autonomy domain: Reconnaissance, Enumeration, Identification, Exploitation, Post-Exploitation, and Reporting, plus an Initialization state that precedes Reconnaissance (recognized by APTS-AR-002). Implementations MUST use these phase names when generating phase-transition events. Domain-specific requirements may reference phase subsets relevant to their scope.
 
 **Timestamp Precision**
 Platform-generated timestamps are expected to use millisecond precision or better (see APTS-AR-001). External timestamp authorities (for example, RFC 3161 services) may operate at lower precision (±1 second); this is acceptable for external timestamping while platform-internal logs maintain millisecond precision.
