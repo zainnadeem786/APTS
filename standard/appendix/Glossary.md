@@ -17,6 +17,9 @@ External service providing artificial intelligence or large language model capab
 **API Key**
 Cryptographic credential used to authenticate API requests to third-party services. Should be stored in secure vaults, rotated annually, and never embedded in code. See Supply Chain Trust.
 
+**Approval Gate**
+A mandatory checkpoint at which an autonomous action pauses until a qualified human operator grants or denies authorization within a defined SLA response window (see APTS-HO-003). Medium and high-impact actions require approval gates regardless of the platform's autonomy level.
+
 **Autonomy Level**
 Classification system (L1-L4) describing degree of independence and decision-making authority of autonomous pentest system. Higher levels require more sophisticated technical safeguards and governance mechanisms while reducing per-action human approval requirements. L1 requires human direction for every action; L4 operates independently within pre-approved boundaries under continuous automated monitoring.
 
@@ -148,6 +151,9 @@ The process of raising an event, finding, or decision to a higher authority or m
 ---
 
 ## F
+
+**Execution Sandbox**
+A kernel-enforced isolation boundary containing the agent runtime, whose configuration the runtime itself has no credentials to modify (see APTS-SC-019). Tool and action allowlists are enforced by components external to the model rather than by the model's own instructions (APTS-SC-020).
 
 **Failover**
 Automatic or manual transition from primary system to backup when primary becomes unavailable. Example: Cloud provider A unavailable → automatically switch to Provider B.
@@ -290,6 +296,9 @@ Demonstration that vulnerability is exploitable. Can be code, command, or screen
 **Production-Like Environment**
 A target environment that mirrors production in configuration, data sensitivity, or network topology sufficiently that unintended testing impact could affect real users, data, or services. This includes staging environments with production data, pre-production environments connected to production networks, and disaster recovery environments that can be activated. Isolated development environments with synthetic data are not production-like.
 
+**Prompt Injection**
+An attack in which adversarial content embedded in data the agent processes (target system responses, files, web pages) attempts to override the agent's instructions or alter its behavior. Manipulation Resistance requirements such as APTS-MR-001 mandate strict separation between operator instructions and target-derived data.
+
 **Qualified Reviewer**
 An individual with demonstrated expertise in penetration testing methodology (for example, OSCP, CREST CRT, GPEN, or equivalent experience), security governance frameworks, and familiarity with AI/ML systems. Organizations may use qualified reviewers when evaluating platforms against APTS requirements.
 
@@ -305,6 +314,9 @@ Maximum acceptable data loss window. If system fails at 2pm and RPO is 1 hour, m
 
 **Recovery Time Objective (RTO)**
 Maximum acceptable downtime after a failure event. Determines backup and failover procedure requirements. Example: an RTO of 4 hours means service must be restored within 4 hours of failure.
+
+**Rollback**
+Restoring a target system or the platform to its pre-action state after testing changes, using pre-action state capture and documented step-by-step procedures (see APTS-SC-014). Evidence is preserved in tamper-evident storage before rollback executes (APTS-SC-016).
 
 **Rules of Engagement (RoE)**
 A formal document defining the scope, boundaries, authorized activities, temporal constraints, escalation procedures, and contact information for an autonomous penetration testing engagement. The RoE is the authoritative source for scope enforcement.
@@ -360,6 +372,9 @@ Manipulation of people to divulge confidential information or perform security-v
 
 **SOC 2**
 Audit standard for service organizations. Type II includes controls testing over time. Widely adopted by cloud and SaaS providers to demonstrate trust assurance.
+
+**Software Bill of Materials (SBOM)**
+A machine-readable inventory of the software components and dependencies used by the platform, maintained in SPDX or CycloneDX format. The baseline inventory is required at Tier 1 (APTS-TP-006); SBOM freshness and customer access obligations apply at Tier 2 (APTS-AR-016).
 
 **SQL Injection (SQLi)**
 Vulnerability in database queries where attacker can insert malicious SQL code. Allows unauthorized database access, data theft, modification.
