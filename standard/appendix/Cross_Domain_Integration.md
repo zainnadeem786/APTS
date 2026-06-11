@@ -10,7 +10,7 @@ The matrix below identifies where an event or action in one domain (row) trigger
 
 | Triggering Event | Source | What Happens | Target Requirements |
 |-----------------|--------|--------------|---------------------|
-| Kill switch activated | SC-009 | All ongoing test activity ceases within 5 seconds; all spawned processes terminate; all network connections close; system state preserved for forensic investigation. | AR-001 |
+| Kill switch activated | SC-009 | All new test actions cease within 5 seconds (Phase 1); spawned processes terminate and network connections close within 60 seconds (Phase 2); system state preserved for forensic investigation. | AR-001 |
 | Kill switch activated | SC-009 | Operators notified immediately via multiple independent channels (email, SMS, messaging) with details of what triggered the halt and actions taken. | HO-015 |
 | Kill switch activated | SC-009 | All test artifacts, logs, and findings evidence captured and stored in immutable, tamper-evident storage before any system cleanup or shutdown occurs. | SC-016 |
 | Kill switch activated | SC-009 | Platform isolated from customer networks; credentials rotated; all active sessions terminated; memory dumps and logs preserved on secure system. | SC-018 |

@@ -50,7 +50,7 @@ APTS does not prescribe who performs the assessment. The choice of internal self
 
 ## Compliance Tiers
 
-APTS defines three compliance tiers. A platform must meet 100% of requirements assigned to its claimed tier (both MUST and SHOULD). No partial credit.
+APTS defines three compliance tiers. A platform claims a tier by implementing every MUST requirement assigned to that tier and all lower tiers, with no deviation, and by either implementing every SHOULD requirement at those tiers or recording a documented justification for each deviation in its conformance claim. An unimplemented MUST requirement or an undocumented SHOULD deviation is a conformance gap; there is no partial credit.
 
 **Verification model:** APTS follows a conformance assessment model, consistent with how other OWASP standards (WSTG, ASVS) are used by practitioners. Platform operators evaluate their platforms against the requirements using the [Checklists](appendix/Checklists.md) and document conformance. The [Conformance Claim Template](appendix/Conformance_Claim_Template.md) provides an optional format for publishing evidence of conformance. Customers MAY independently verify claims using the [Vendor Evaluation Guide](appendix/Vendor_Evaluation_Guide.md) or the [Customer Acceptance Testing](appendix/Customer_Acceptance_Testing.md) appendix for hands-on verification of behavioral requirements (kill switch response times, scope enforcement accuracy, manipulation resistance) that cannot be verified through documentation alone.
 

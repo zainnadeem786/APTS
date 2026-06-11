@@ -129,7 +129,7 @@ The current version is **v0.1.0**. New normative requirements submitted now will
 
 To propose a new requirement, open an issue first with the following fields. Do not submit a PR with cross-cutting count changes until the proposal has been reviewed and accepted for a target version.
 
-- **ID:** Next available ID in the target domain. For a tier-gated requirement, use the next sequential number (for example, APTS-SE-027). For an advisory requirement, use the next sequential `A<NN>` number in the target domain (for example, APTS-SE-A01 if no SE advisory exists yet, or APTS-TP-A04 as the next TP advisory). Tier-gated and advisory IDs are in separate sequences and do not collide
+- **ID:** Next available ID in the target domain. For a tier-gated requirement, use the next sequential number (for example, APTS-SE-027). For an advisory requirement, use the next sequential `A<NN>` number in the target domain (for example, APTS-SE-A01 if no SE advisory exists yet, or APTS-TP-A05 as the next TP advisory). Tier-gated and advisory IDs are in separate sequences and do not collide
 - **Title:** Concise requirement name
 - **Classification:** MUST, SHOULD, or MAY
 - **Tier:** 1, 2, or 3

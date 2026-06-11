@@ -49,7 +49,7 @@ The 19 requirements in this domain fall into six thematic groups:
 
 ### Conformance
 
-A platform claims conformance with this domain by satisfying all MUST requirements at the compliance tier it targets. APTS defines three cumulative compliance tiers (Tier 1 Foundation, Tier 2 Verified, Tier 3 Comprehensive) in the [Introduction](../Introduction.md); a Tier 2 platform satisfies every Tier 1 HO requirement plus every Tier 2 HO requirement, and a Tier 3 platform satisfies all three tiers. Human Oversight has no Tier 3 requirements in this release; a Tier 3 claim therefore requires all Tier 1 and Tier 2 HO requirements. SHOULD-level requirements are interpreted per RFC 2119.
+A platform claims conformance with this domain by implementing every MUST requirement assigned to the compliance tier it targets and to all lower tiers, with no deviation, and by either implementing every SHOULD requirement at those tiers or recording a documented justification for each deviation in its conformance claim (see the [Conformance Claim Template](../appendix/Conformance_Claim_Template.md)). An unimplemented MUST requirement or an undocumented SHOULD deviation is a conformance gap. APTS defines three cumulative compliance tiers (Tier 1 Foundation, Tier 2 Verified, Tier 3 Comprehensive) in the [Introduction](../Introduction.md); a Tier 2 platform satisfies every Tier 1 HO requirement plus every Tier 2 HO requirement, and a Tier 3 platform satisfies all three tiers. Human Oversight has no Tier 3 requirements in this release; a Tier 3 claim therefore requires all Tier 1 and Tier 2 HO requirements.
 
 Two appendix-only advisory requirements for this domain (APTS-HO-A01 Out-of-Band Kill Switch via Independent Network and APTS-HO-A02 Disclosure and Mitigation of AI Influence on Operator Decisions) are documented in the [Advisory Requirements appendix](../appendix/Advisory_Requirements.md). They are not required for conformance at any tier.
 
@@ -90,7 +90,7 @@ Approval gates MUST:
 
 > **See also:** APTS-SC-006 (threshold escalation workflow).
 
-**Rationale for CVSS >= 7.0 threshold:** CVSS 7.0 represents the boundary between "Medium" (informational, low likelihood of immediate impact) and "High" severity (significant potential for system compromise or data exposure). Exploitations at or above this threshold carry meaningful risk of unintended production impact, data loss, or service disruption. Requiring human approval at this boundary ensures that an operator evaluates the risk/reward trade-off before the platform attempts high-impact exploitation. Organizations MAY lower this threshold (for example, to 4.0 for critical infrastructure) but MUST NOT raise it above 7.0.
+**Rationale for CVSS >= 7.0 threshold:** CVSS 7.0 is the boundary between the "Medium" range (4.0-6.9) and the "High" range (7.0-8.9), where a finding carries significant potential for system compromise or data exposure. Exploitations at or above this threshold carry meaningful risk of unintended production impact, data loss, or service disruption. Requiring human approval at this boundary ensures that an operator evaluates the risk/reward trade-off before the platform attempts high-impact exploitation. Organizations MAY lower this threshold (for example, to 4.0 for critical infrastructure) but MUST NOT raise it above 7.0.
 
 ### Verification
 

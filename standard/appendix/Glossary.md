@@ -17,6 +17,9 @@ External service providing artificial intelligence or large language model capab
 **API Key**
 Cryptographic credential used to authenticate API requests to third-party services. Should be stored in secure vaults, rotated annually, and never embedded in code. See Supply Chain Trust.
 
+**Approval Gate**
+A mandatory checkpoint at which an autonomous action pauses until a qualified human operator grants or denies authorization within a defined SLA response window (see APTS-HO-003). Medium and high-impact actions require approval gates regardless of the platform's autonomy level.
+
 **Autonomy Level**
 Classification system (L1-L4) describing degree of independence and decision-making authority of autonomous pentest system. Higher levels require more sophisticated technical safeguards and governance mechanisms while reducing per-action human approval requirements. L1 requires human direction for every action; L4 operates independently within pre-approved boundaries under continuous automated monitoring.
 
@@ -79,7 +82,7 @@ Notation for specifying IP address ranges using a base address and prefix length
 Alternative security measures that mitigate vulnerability when the primary control is missing. Example: Two-factor authentication compensates for weak passwords.
 
 **Compliance Tier**
-One of three progressive levels of APTS conformance. Tier 1 (Foundation) requires 72 core requirements (MUST | Tier 1). Tier 2 (Verified) adds 85 requirements for a cumulative 157 (MUST | Tier 2 + SHOULD | Tier 2). Tier 3 (Comprehensive) adds 16 requirements for a cumulative 173 (MUST | Tier 3 + SHOULD | Tier 3). A platform must meet 100% of requirements assigned to its claimed tier (both MUST and SHOULD). An additional 18 advisory practices in the Advisory Requirements appendix are recommended for highest-assurance engagements but are not counted toward any tier.
+One of three progressive levels of APTS conformance. Tier 1 (Foundation) requires 72 core requirements (MUST | Tier 1). Tier 2 (Verified) adds 85 requirements for a cumulative 157 (MUST | Tier 2 + SHOULD | Tier 2). Tier 3 (Comprehensive) adds 16 requirements for a cumulative 173 (MUST | Tier 3 + SHOULD | Tier 3). A platform claims a tier by implementing every MUST requirement at that tier and all lower tiers, with no deviation, and by either implementing every SHOULD requirement at those tiers or recording a documented justification for each deviation in its conformance claim. An additional 18 advisory practices in the Advisory Requirements appendix are recommended for highest-assurance engagements but are not counted toward any tier.
 
 **Confidence Score**
 A numeric value on a 0-100% scale indicating the platform's certainty in a scope boundary determination, target legitimacy assessment, asset classification, or finding validity. Scores below 75% for scope-related decisions trigger mandatory human escalation. See APTS-HO-013, APTS-RP-003.
@@ -148,6 +151,9 @@ The process of raising an event, finding, or decision to a higher authority or m
 ---
 
 ## F
+
+**Execution Sandbox**
+A kernel-enforced isolation boundary containing the agent runtime, whose configuration the runtime itself has no credentials to modify (see APTS-SC-019). Tool and action allowlists are enforced by components external to the model rather than by the model's own instructions (APTS-SC-020).
 
 **Failover**
 Automatic or manual transition from primary system to backup when primary becomes unavailable. Example: Cloud provider A unavailable → automatically switch to Provider B.
@@ -290,6 +296,9 @@ Demonstration that vulnerability is exploitable. Can be code, command, or screen
 **Production-Like Environment**
 A target environment that mirrors production in configuration, data sensitivity, or network topology sufficiently that unintended testing impact could affect real users, data, or services. This includes staging environments with production data, pre-production environments connected to production networks, and disaster recovery environments that can be activated. Isolated development environments with synthetic data are not production-like.
 
+**Prompt Injection**
+An attack in which adversarial content embedded in data the agent processes (target system responses, files, web pages) attempts to override the agent's instructions or alter its behavior. Manipulation Resistance requirements such as APTS-MR-001 mandate strict separation between operator instructions and target-derived data.
+
 **Qualified Reviewer**
 An individual with demonstrated expertise in penetration testing methodology (for example, OSCP, CREST CRT, GPEN, or equivalent experience), security governance frameworks, and familiarity with AI/ML systems. Organizations may use qualified reviewers when evaluating platforms against APTS requirements.
 
@@ -305,6 +314,9 @@ Maximum acceptable data loss window. If system fails at 2pm and RPO is 1 hour, m
 
 **Recovery Time Objective (RTO)**
 Maximum acceptable downtime after a failure event. Determines backup and failover procedure requirements. Example: an RTO of 4 hours means service must be restored within 4 hours of failure.
+
+**Rollback**
+Restoring a target system or the platform to its pre-action state after testing changes, using pre-action state capture and documented step-by-step procedures (see APTS-SC-014). Evidence is preserved in tamper-evident storage before rollback executes (APTS-SC-016).
 
 **Rules of Engagement (RoE)**
 A formal document defining the scope, boundaries, authorized activities, temporal constraints, escalation procedures, and contact information for an autonomous penetration testing engagement. The RoE is the authoritative source for scope enforcement.
@@ -361,6 +373,9 @@ Manipulation of people to divulge confidential information or perform security-v
 **SOC 2**
 Audit standard for service organizations. Type II includes controls testing over time. Widely adopted by cloud and SaaS providers to demonstrate trust assurance.
 
+**Software Bill of Materials (SBOM)**
+A machine-readable inventory of the software components and dependencies used by the platform, maintained in SPDX or CycloneDX format. The baseline inventory is required at Tier 1 (APTS-TP-006); SBOM freshness and customer access obligations apply at Tier 2 (APTS-AR-016).
+
 **SQL Injection (SQLi)**
 Vulnerability in database queries where attacker can insert malicious SQL code. Allows unauthorized database access, data theft, modification.
 
@@ -381,7 +396,7 @@ A single technique execution or check performed by the platform against a target
 Database-level encryption of data at rest. Automatic, transparent to applications. Used for protection of sensitive data in databases.
 
 **Testing Phase**
-A discrete stage in the penetration testing lifecycle. This standard recognizes the following canonical phases: Initialization, Reconnaissance, Enumeration, Vulnerability Assessment, Exploitation, Post-Exploitation, and Reporting. Domain-specific requirements may reference phase subsets relevant to their scope.
+A discrete stage in the penetration testing lifecycle. This standard uses the canonical phase model defined in the Graduated Autonomy domain: Reconnaissance, Enumeration, Identification, Exploitation, Post-Exploitation, and Reporting, plus an Initialization state that precedes Reconnaissance (recognized by APTS-AR-002). Implementations MUST use these phase names when generating phase-transition events. Domain-specific requirements may reference phase subsets relevant to their scope.
 
 **Timestamp Precision**
 Platform-generated timestamps are expected to use millisecond precision or better (see APTS-AR-001). External timestamp authorities (for example, RFC 3161 services) may operate at lower precision (±1 second); this is acceptable for external timestamping while platform-internal logs maintain millisecond precision.

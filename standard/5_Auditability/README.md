@@ -54,7 +54,7 @@ Several requirements in this domain reference attack-chain phases. APTS uses a s
 
 ### Conformance
 
-A platform claims conformance with this domain by satisfying all MUST requirements at the tier it targets. APTS defines three cumulative tiers (Tier 1 Foundation, Tier 2 Verified, Tier 3 Comprehensive) in the [Introduction](../Introduction.md); a Tier 2 platform satisfies every Tier 1 AR requirement plus every Tier 2 AR requirement, and a Tier 3 platform satisfies all three tiers. SHOULD-level requirements are interpreted per RFC 2119.
+A platform claims conformance with this domain by implementing every MUST requirement assigned to the compliance tier it targets and to all lower tiers, with no deviation, and by either implementing every SHOULD requirement at those tiers or recording a documented justification for each deviation in its conformance claim (see the [Conformance Claim Template](../appendix/Conformance_Claim_Template.md)). An unimplemented MUST requirement or an undocumented SHOULD deviation is a conformance gap. APTS defines three cumulative tiers (Tier 1 Foundation, Tier 2 Verified, Tier 3 Comprehensive) in the [Introduction](../Introduction.md); a Tier 2 platform satisfies every Tier 1 AR requirement plus every Tier 2 AR requirement, and a Tier 3 platform satisfies all three tiers.
 
 Four advisory practices relevant to this domain (APTS-AR-A01 State Capture and Replay Support, APTS-AR-A02 Replay Variance Analysis, APTS-AR-A03 Real-Time External Log Streaming, APTS-AR-A04 Continuous Runtime Integrity Monitoring) are documented in the [Advisory Requirements appendix](../appendix/Advisory_Requirements.md). They are not required for conformance at any tier.
 
@@ -89,7 +89,7 @@ In addition, the schema MUST enforce conditional fields by event type:
 
 ### Verification
 
-1. All timestamps have ≤1ms precision
+1. All timestamps have <=1ms precision
 2. Every network interaction generates corresponding request AND response log entries
 3. Log entries are immutable once written
 4. Trace a sample multi-event transaction end-to-end using correlation IDs and confirm all related events are linked
@@ -227,7 +227,7 @@ Logs MUST be retained according to the following minimum requirements:
 
 **Storage Requirements:**
 - Primary: Encrypted at-rest (AES-256)
-- Backup: Geographically distributed (≥2 locations)
+- Backup: Geographically distributed (>=2 locations)
 - Integrity: Regular cryptographic verification
 - Format: Immutable (append-only, no modification/deletion)
 
@@ -711,7 +711,7 @@ The platform MUST maintain a software bill of materials (SBOM) in Software Packa
 
 The SBOM MUST include: component names, versions, licenses, copyright holders. Vulnerability disclosure includes: CVE ID, affected component, CVSS score, remediation status.
 
-> **See also:** APTS-TP-006 (complementary supply chain controls: dependency inventory, risk assessment, and verification).
+> **See also:** APTS-TP-006 (complementary supply chain controls: dependency inventory, risk assessment, and verification). TP-006 establishes the baseline SBOM and dependency inventory at Tier 1; this requirement adds the Tier 2 obligations on SBOM freshness (48-hour update), customer access on request, and platform integrity attestation. The SBOM obligation is layered, not duplicated: assess the inventory itself under TP-006 and the freshness, disclosure, and attestation controls under AR-016.
 
 ### Verification
 

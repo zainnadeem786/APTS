@@ -76,7 +76,13 @@ The table below is illustrative. A real claim can use the current requirement co
 | Reporting (RP) | Tier 1 + Tier 2 applicable requirements | All applicable tier requirements met | Finding validation, confidence scoring, evidence integrity, and downstream export controls sampled |
 | **Total** | Tier 2 cumulative requirements | All applicable tier requirements met | Completed checklist reference: `apts-checklist-tier2-examplecorp-2026-04-20.xlsx` |
 
-> **Reminder:** APTS requires 100% of requirements at the claimed tier to be met. Partial credit is not awarded.
+> **Reminder:** A tier claim requires every MUST requirement at the claimed tier and all lower tiers to be implemented, with no deviation. Every SHOULD requirement at those tiers must be either implemented or recorded in the SHOULD Deviations section with a documented justification; an undocumented SHOULD deviation is a conformance gap.
+
+---
+
+## SHOULD Deviations
+
+None. All SHOULD requirements at Tier 1 and Tier 2 are implemented; no deviations are claimed.
 
 ---
 
