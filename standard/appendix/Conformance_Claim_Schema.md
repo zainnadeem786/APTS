@@ -88,10 +88,12 @@ Recommended fields:
 Recommended fields:
 
 - `requirement_id`
-- `exception_type`
+- `exception_type` (for example, `should_deviation`, `not_applicable`, `scope_limitation`)
 - `description`
 - `approval_reference`
 - `review_by`
+
+A deviation from a SHOULD requirement at the claimed tier must be recorded here (or in the SHOULD Deviations section of the markdown template) with a documented justification; see the conformance rules in the [Introduction](../Introduction.md#compliance-tiers).
 
 ### 7. Assessment attestation
 
