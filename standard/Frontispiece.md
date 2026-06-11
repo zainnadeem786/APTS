@@ -41,6 +41,8 @@ This standard uses RFC 2119 language:
 | **MAY** | Optional. Implementation is at the organization's discretion. |
 | **OPTIONAL** | Truly discretionary. May be included based on organizational needs. |
 
+A requirement's classification (MUST or SHOULD, shown in its Requirement Index entry) sets its conformance weight for the tier. Within a requirement's text, sub-clauses may carry their own RFC 2119 keywords describing how the control is implemented. Where a SHOULD-classified requirement contains MUST sub-clauses, those sub-clauses are conditional: they become mandatory only once the organization elects to implement the requirement (or where the requirement's Applicability statement is met). A SHOULD requirement may still be deviated from with documented justification per the conformance rules in the Introduction.
+
 ---
 
 ## Requirement ID Format
@@ -65,6 +67,14 @@ Requirements follow the format: **APTS-[DOMAIN]-[NUMBER]**
 Copyright 2026 The OWASP Foundation.
 
 Licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). You may share and adapt this material for any purpose, including commercial, provided you give attribution and distribute under the same license.
+
+---
+
+## Version History
+
+| Version | Date | Notes |
+|---------|------|-------|
+| 0.1.0 | April 2026 | Initial release. Eight domains, 173 tier-required requirements across three compliance tiers, plus 18 advisory practices in the appendix. |
 
 ---
 
