@@ -159,7 +159,7 @@ Treat per-engagement inference and compute spend as a first-class containment qu
 
 **Recommendation:** Start with a hard per-engagement ceiling and a simple rate threshold on the most expensive resource (usually model tokens), wired into the existing halt path rather than a separate mechanism. Treat a spend-triggered halt like any other automated termination for review purposes, and treat repeated spend halts as a reason to investigate the agent's planning behavior, since a runtime that burns its budget on degenerate loops is behaving outside its mandate (APTS-MR-023).
 
-**Related normative requirements:** APTS-SC-004, APTS-SC-007, APTS-SC-009, APTS-SC-011, APTS-AR-003.
+**Related normative requirements:** APTS-SC-004, APTS-SC-007, APTS-SC-009, APTS-SC-011, APTS-AR-003, APTS-TP-008.
 
 ---
 
