@@ -141,6 +141,28 @@ Platforms operating with multi-step agents should also define a bounded set of d
 
 ---
 
+### APTS-SC-A04: Inference Spend and Compute Budget Containment (Advisory)
+
+**Applicability:** This practice applies to platforms whose agent consumes metered compute or inference (model API tokens, GPU time, or per-call tool and service costs) during an engagement.
+
+**Rationale:** APTS contains the agent along several axes but not its own compute consumption. SC-004 limits traffic to the target (connection, bandwidth, and payload constraints), SC-011 terminates on host resource exhaustion (CPU, memory), SC-007 halts on cumulative risk, and SC-013 halts on wall-clock duration. None treats inference or compute spend as a quantity to monitor or a condition to halt on. The closest reference, TP-008, raises a cloud billing alert, but only as a signal of account compromise, and it alerts rather than stops the agent. The unaddressed case is a runaway agent: a planning loop, a retry storm, or a degenerate tool-call chain that consumes tokens or compute far beyond the engagement's intended envelope, with no spend ceiling to arrest it. This is a containment concern rather than a cost-management nicety, because uncontrolled consumption is one observable signature of an agent operating outside its mandate.
+
+**Value:** A spend ceiling that halts the agent turns an open-ended runaway into a bounded, reviewable event, and burn-rate anomaly detection surfaces degenerate behavior early, before it exhausts a budget or masks a deeper fault.
+
+**Practice Description:**
+
+Treat per-engagement inference and compute spend as a first-class containment quantity:
+
+1. **Set a spend ceiling that halts.** Define a per-engagement budget for inference and metered compute, and halt the agent through the existing kill-switch and termination path (APTS-SC-009, APTS-SC-011) when the ceiling is reached, rather than only logging the overage.
+2. **Monitor burn rate, not just totals.** Track consumption rate against an expected envelope and treat an abnormal spike (for example, a retry or planning loop) as an escalation signal, since the rate anomaly precedes budget exhaustion.
+3. **Record spend in the audit trail.** Log per-engagement consumption and any spend-triggered halt alongside the other termination conditions, so a halt and its cause are reconstructable.
+
+**Recommendation:** Start with a hard per-engagement ceiling and a simple rate threshold on the most expensive resource (usually model tokens), wired into the existing halt path rather than a separate mechanism. Treat a spend-triggered halt like any other automated termination for review purposes, and treat repeated spend halts as a reason to investigate the agent's planning behavior, since a runtime that burns its budget on degenerate loops is behaving outside its mandate (APTS-MR-023).
+
+**Related normative requirements:** APTS-SC-004, APTS-SC-007, APTS-SC-009, APTS-SC-011, APTS-AR-003, APTS-TP-008.
+
+---
+
 ### APTS-MR-A03: Multi-Turn Adversarial Conversation Resilience (Advisory)
 
 **Applicability:** This practice applies to platforms that use LLM-based or agentic runtimes with conversational state spanning multiple turns, tool calls, or planning steps.
